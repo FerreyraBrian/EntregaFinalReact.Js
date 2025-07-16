@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState, createContext, useContext } from "react";
 import { fetchProducts, addProduct } from "./services/api";
 import Home from "./pages/Home";
@@ -73,6 +73,7 @@ const ProtectedRoute = ({ children }) => {
 
 const LoginPage = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
   const [form, setForm] = useState({ user: '', pass: '' });
   const [error, setError] = useState('');
 
@@ -86,6 +87,10 @@ const LoginPage = () => {
     if (form.user === 'admin' && form.pass === '1234') {
       login();
       toast.success('¡Sesión iniciada correctamente!');
+      // Redirigir al panel de admin después del login exitoso
+      setTimeout(() => {
+        navigate('/admin');
+      }, 1000);
     } else {
       setError('Usuario o contraseña incorrectos');
     }
