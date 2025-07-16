@@ -85,6 +85,7 @@ const LoginPage = () => {
     e.preventDefault();
     if (form.user === 'admin' && form.pass === '1234') {
       login();
+      toast.success('¡Sesión iniciada correctamente!');
     } else {
       setError('Usuario o contraseña incorrectos');
     }
