@@ -103,6 +103,8 @@ const LoginPage = () => {
       margin: '2rem auto',
       maxWidth: 400,
       padding: '2rem',
+      width: '90%',
+      maxWidth: '400px'
     }}>
       <form
         onSubmit={handleSubmit}
@@ -113,7 +115,7 @@ const LoginPage = () => {
           gap: '1.2rem',
         }}
       >
-        <h2 style={{ textAlign: 'center', color: '#0077b6', marginBottom: '1rem' }}>Iniciar sesión</h2>
+        <h2 style={{ textAlign: 'center', color: '#0077b6', marginBottom: '1rem', fontSize: '1.8rem' }}>Iniciar sesión</h2>
         <input
           type="text"
           name="user"
@@ -122,10 +124,11 @@ const LoginPage = () => {
           onChange={handleChange}
           required
           style={{
-            padding: '0.8rem',
-            border: '1px solid #ccc',
+            padding: '1rem',
+            border: '2px solid #e0e0e0',
             borderRadius: '8px',
             fontSize: '1rem',
+            transition: 'border-color 0.3s ease',
           }}
         />
         <input
@@ -136,24 +139,26 @@ const LoginPage = () => {
           onChange={handleChange}
           required
           style={{
-            padding: '0.8rem',
-            border: '1px solid #ccc',
+            padding: '1rem',
+            border: '2px solid #e0e0e0',
             borderRadius: '8px',
             fontSize: '1rem',
+            transition: 'border-color 0.3s ease',
           }}
         />
-        {error && <div style={{color:'red',textAlign:'center'}}>{error}</div>}
+        {error && <div style={{color:'red',textAlign:'center',fontSize:'0.9rem'}}>{error}</div>}
         <button
           type="submit"
           style={{
-            padding: '0.8rem',
+            padding: '1rem',
             backgroundColor: '#0077b6',
             color: 'white',
             border: 'none',
             borderRadius: '8px',
             fontSize: '1rem',
             cursor: 'pointer',
-            transition: 'background 0.2s',
+            transition: 'background 0.2s ease, transform 0.2s ease',
+            fontWeight: '600',
           }}
         >
           Entrar
@@ -209,18 +214,120 @@ const AdminPage = () => {
   };
 
   return (
-    <div style={{ margin: '2rem' }}>
-      <h2>Panel de Admin</h2>
-      <button onClick={logout}>Cerrar sesión</button>
+    <div style={{ margin: '2rem', maxWidth: '1200px', margin: '2rem auto' }}>
+      <h2 style={{textAlign: 'center', color: '#0077b6', marginBottom: '2rem', fontSize: '2rem'}}>Panel de Admin</h2>
+      <button 
+        onClick={logout} 
+        style={{
+          background: '#e63946', 
+          color: '#fff', 
+          border: 'none', 
+          borderRadius: '8px',
+          padding: '0.8rem 1.5rem',
+          cursor: 'pointer',
+          fontSize: '1rem',
+          fontWeight: '600',
+          marginBottom: '2rem',
+          transition: 'background 0.2s ease'
+        }}
+      >
+        Cerrar sesión
+      </button>
       {/* Formulario para agregar productos */}
-      <form onSubmit={handleAddSubmit} style={{background:'#f9f9f9',padding:'1rem',borderRadius:8,boxShadow:'0 2px 8px #eee',maxWidth:400,margin:'2rem auto',display:'flex',flexDirection:'column',gap:'0.7rem'}}>
-        <h3 style={{color:'#0077b6',marginBottom:0}}>Agregar Producto</h3>
-        <input name="name" value={addForm.name} onChange={handleAddChange} placeholder="Nombre" required />
-        <input name="price" value={addForm.price} onChange={handleAddChange} placeholder="Precio" required type="number" min="0" />
-        <input name="image" value={addForm.image} onChange={handleAddChange} placeholder="URL Imagen" required />
-        <textarea name="description" value={addForm.description} onChange={handleAddChange} placeholder="Descripción" required minLength={10} />
-        {addError && <div style={{color:'red'}}>{addError}</div>}
-        <button type="submit" disabled={addLoading} style={{background:'#0077b6',color:'#fff',border:'none',borderRadius:6,padding:'0.5rem 1.2rem',marginTop:'0.5rem',cursor:'pointer',display:'flex',alignItems:'center',gap:'0.5rem'}}>
+      <form onSubmit={handleAddSubmit} style={{
+        background:'#f9f9f9',
+        padding:'2rem',
+        borderRadius:12,
+        boxShadow:'0 4px 16px rgba(0,0,0,0.1)',
+        maxWidth:500,
+        margin:'0 auto',
+        display:'flex',
+        flexDirection:'column',
+        gap:'1rem'
+      }}>
+        <h3 style={{color:'#0077b6',marginBottom:'1rem',textAlign:'center',fontSize:'1.5rem'}}>Agregar Producto</h3>
+        <input 
+          name="name" 
+          value={addForm.name} 
+          onChange={handleAddChange} 
+          placeholder="Nombre" 
+          required 
+          style={{
+            padding: '1rem',
+            border: '2px solid #e0e0e0',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            transition: 'border-color 0.3s ease'
+          }}
+        />
+        <input 
+          name="price" 
+          value={addForm.price} 
+          onChange={handleAddChange} 
+          placeholder="Precio" 
+          required 
+          type="number" 
+          min="0" 
+          style={{
+            padding: '1rem',
+            border: '2px solid #e0e0e0',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            transition: 'border-color 0.3s ease'
+          }}
+        />
+        <input 
+          name="image" 
+          value={addForm.image} 
+          onChange={handleAddChange} 
+          placeholder="URL Imagen" 
+          required 
+          style={{
+            padding: '1rem',
+            border: '2px solid #e0e0e0',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            transition: 'border-color 0.3s ease'
+          }}
+        />
+        <textarea 
+          name="description" 
+          value={addForm.description} 
+          onChange={handleAddChange} 
+          placeholder="Descripción" 
+          required 
+          minLength={10} 
+          style={{
+            padding: '1rem',
+            border: '2px solid #e0e0e0',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            minHeight: '100px',
+            resize: 'vertical',
+            transition: 'border-color 0.3s ease'
+          }}
+        />
+        {addError && <div style={{color:'red',textAlign:'center',fontSize:'0.9rem'}}>{addError}</div>}
+        <button 
+          type="submit" 
+          disabled={addLoading} 
+          style={{
+            background:'#0077b6',
+            color:'#fff',
+            border:'none',
+            borderRadius:8,
+            padding:'1rem 1.5rem',
+            marginTop:'1rem',
+            cursor:'pointer',
+            display:'flex',
+            alignItems:'center',
+            justifyContent:'center',
+            gap:'0.5rem',
+            fontSize:'1rem',
+            fontWeight:'600',
+            transition:'background 0.2s ease'
+          }}
+        >
           <FaPlus /> {addLoading ? 'Agregando...' : 'Agregar'}
         </button>
       </form>
@@ -281,55 +388,160 @@ const CarritoPage = () => {
   const ticketTotal = ticketItems.reduce((acc, p) => acc + p.price * p.cantidad, 0);
 
   return (
-    <div style={{maxWidth:600,margin:'2rem auto',background:'#fff',borderRadius:12,padding:'2rem',boxShadow:'0 4px 16px rgba(0,0,0,0.08)'}}>
-      <h2 style={{color:'#0077b6'}}>Carrito de Compras</h2>
+    <div style={{
+      maxWidth: 800,
+      margin: '2rem auto',
+      background: '#fff',
+      borderRadius: 12,
+      padding: '2rem',
+      boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+      width: '90%'
+    }}>
+      <h2 style={{color: '#0077b6', textAlign: 'center', marginBottom: '2rem', fontSize: '2rem'}}>Carrito de Compras</h2>
       {carrito.length === 0 ? (
-        <p>El carrito está vacío.</p>
+        <p style={{textAlign: 'center', fontSize: '1.2rem', color: '#666'}}>El carrito está vacío.</p>
       ) : (
         <>
-          <ul style={{listStyle:'none',padding:0}}>
+          <ul style={{listStyle: 'none', padding: 0, marginBottom: '2rem'}}>
             {carrito.map((p) => (
-              <li key={p.id} style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'1rem',borderBottom:'1px solid #eee',paddingBottom:'0.5rem'}}>
-                <span>{p.name} x{p.cantidad}</span>
-                <span>${(p.price * p.cantidad).toFixed(2)}</span>
-                <button onClick={() => eliminarDelCarrito(p.id)} style={{background:'#e63946',color:'#fff',border:'none',borderRadius:6,padding:'0.3rem 0.7rem',cursor:'pointer'}}>Eliminar</button>
+              <li key={p.id} style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginBottom: '1rem',
+                borderBottom: '1px solid #eee',
+                paddingBottom: '1rem',
+                flexWrap: 'wrap',
+                gap: '0.5rem'
+              }}>
+                <div style={{flex: '1', minWidth: '200px'}}>
+                  <span style={{fontWeight: '600', fontSize: '1.1rem'}}>{p.name}</span>
+                  <div style={{color: '#666', fontSize: '0.9rem'}}>Cantidad: {p.cantidad}</div>
+                </div>
+                <span style={{fontWeight: '600', fontSize: '1.1rem'}}>${(p.price * p.cantidad).toFixed(2)}</span>
+                <button 
+                  onClick={() => eliminarDelCarrito(p.id)} 
+                  style={{
+                    background: '#e63946',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: 6,
+                    padding: '0.5rem 1rem',
+                    cursor: 'pointer',
+                    fontSize: '0.9rem',
+                    transition: 'background 0.2s ease'
+                  }}
+                >
+                  Eliminar
+                </button>
               </li>
             ))}
           </ul>
-          <h3>Total: ${total.toFixed(2)}</h3>
-          <button onClick={vaciarCarrito} style={{background:'#0077b6',color:'#fff',border:'none',borderRadius:8,padding:'0.6rem 1.2rem',cursor:'pointer',marginTop:'1rem',marginRight:'1rem'}}>Vaciar carrito</button>
-          <button 
-            onClick={handlePedido}
-            disabled={carrito.length === 0}
-            style={{
-              background:'#43aa8b',
-              color:'#fff',
-              border:'none',
-              borderRadius:8,
-              padding:'0.6rem 1.2rem',
-              cursor: carrito.length === 0 ? 'not-allowed' : 'pointer',
-              marginTop:'1rem'
-            }}
-          >
-            Realizar pedido
-          </button>
+          <div style={{textAlign: 'center', marginBottom: '2rem'}}>
+            <h3 style={{fontSize: '1.5rem', color: '#0077b6', marginBottom: '1rem'}}>Total: ${total.toFixed(2)}</h3>
+            <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+              <button 
+                onClick={vaciarCarrito} 
+                style={{
+                  background: '#0077b6',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: 8,
+                  padding: '0.8rem 1.5rem',
+                  cursor: 'pointer',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  transition: 'background 0.2s ease'
+                }}
+              >
+                Vaciar carrito
+              </button>
+              <button 
+                onClick={handlePedido}
+                disabled={carrito.length === 0}
+                style={{
+                  background: '#43aa8b',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: 8,
+                  padding: '0.8rem 1.5rem',
+                  cursor: carrito.length === 0 ? 'not-allowed' : 'pointer',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  transition: 'background 0.2s ease',
+                  opacity: carrito.length === 0 ? 0.6 : 1
+                }}
+              >
+                Realizar pedido
+              </button>
+            </div>
+          </div>
         </>
       )}
       {/* Modal de ticket */}
       {showTicket && (
-        <div style={{position:'fixed',top:0,left:0,width:'100vw',height:'100vh',background:'rgba(0,0,0,0.3)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:1000}}>
-          <div style={{background:'#fff',padding:'2rem',borderRadius:12,boxShadow:'0 4px 16px #333',maxWidth:400}}>
-            <h2 style={{color:'#0077b6'}}>¡Gracias por tu compra!</h2>
-            <h4>Ticket de pedido:</h4>
-            <ul style={{listStyle:'none',padding:0}}>
-              {ticketItems.map((p) => (
-                <li key={p.id} style={{marginBottom:'0.5rem'}}>
-                  {p.name} x{p.cantidad} - ${ (p.price * p.cantidad).toFixed(2) }
-                </li>
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          background: 'rgba(0,0,0,0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          padding: '1rem'
+        }}>
+          <div style={{
+            background: '#fff',
+            padding: '2rem',
+            borderRadius: 12,
+            maxWidth: 500,
+            width: '100%',
+            maxHeight: '80vh',
+            overflow: 'auto'
+          }}>
+            <h3 style={{color: '#0077b6', textAlign: 'center', marginBottom: '1.5rem'}}>¡Pedido Realizado!</h3>
+            <div style={{marginBottom: '1.5rem'}}>
+              {ticketItems.map((item, index) => (
+                <div key={index} style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  marginBottom: '0.5rem',
+                  padding: '0.5rem 0',
+                  borderBottom: '1px solid #eee'
+                }}>
+                  <span>{item.name} x{item.cantidad}</span>
+                  <span>${(item.price * item.cantidad).toFixed(2)}</span>
+                </div>
               ))}
-            </ul>
-            <h3>Total: ${ticketTotal.toFixed(2)}</h3>
-            <button onClick={handleCerrarTicket} style={{background:'#0077b6',color:'#fff',border:'none',borderRadius:8,padding:'0.6rem 1.2rem',cursor:'pointer',marginTop:'1rem'}}>Cerrar</button>
+            </div>
+            <div style={{
+              borderTop: '2px solid #0077b6',
+              paddingTop: '1rem',
+              marginBottom: '1.5rem',
+              textAlign: 'center'
+            }}>
+              <strong>Total: ${ticketTotal.toFixed(2)}</strong>
+            </div>
+            <button 
+              onClick={handleCerrarTicket}
+              style={{
+                background: '#0077b6',
+                color: '#fff',
+                border: 'none',
+                borderRadius: 8,
+                padding: '0.8rem 1.5rem',
+                cursor: 'pointer',
+                fontSize: '1rem',
+                fontWeight: '600',
+                width: '100%',
+                transition: 'background 0.2s ease'
+              }}
+            >
+              Cerrar
+            </button>
           </div>
         </div>
       )}

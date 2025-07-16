@@ -1,8 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: sans-serif;
-  background-color: #f3f3f3;
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Touch-friendly buttons */
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #0077b6;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 768px) {
+  button, 
+  input[type="button"], 
+  input[type="submit"], 
+  input[type="reset"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input, 
+  textarea, 
+  select {
+    min-height: 44px;
+  }
 }
 
 .container {
