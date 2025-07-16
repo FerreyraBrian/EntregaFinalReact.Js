@@ -1,12 +1,37 @@
-# React + Vite
+# PreEntregaReact
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instalación
 
-Currently, two official plugins are available:
+1. Clona el repositorio:
+   ```bash
+   git clone <URL-del-repo>
+   cd PreEntregaReact
+   ```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+## Uso
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+
+2. Abre tu navegador en la URL que aparece en la terminal (por ejemplo, http://localhost:5173 o http://localhost:5174).
+
+## Funcionalidades principales
+
+- **Autenticación:** Solo puedes acceder a secciones protegidas (como Admin y Carrito) con el usuario `admin` y contraseña `1234`.
+- **Gestión de productos:** Agrega, edita, elimina y busca productos (requiere login).
+- **Carrito de compras:** Añade productos al carrito y gestiona su contenido.
+- **Búsqueda:** Filtra productos por nombre o categoría en tiempo real.
+
+## Notas
+- La API de productos utiliza [MockAPI](https://mockapi.io/).
+- Si tienes problemas, revisa la consola del navegador y la terminal para ver mensajes de error.
+
+---
+¡Listo para usar y modificar según tus necesidades!
